@@ -35,9 +35,9 @@ For more information about using Ruby on Heroku, see these Dev Center articles:
 
 # tspoon
 
-Additional Notes
----------------
+## Steps I followed
 A. Setting up the environment
+
 ————————————————————————
 1) Created a Heroku account
 2) Installed Heroku toolbelt
@@ -62,12 +62,12 @@ C. Build the app
 	- Create the HTML pages
 	- Create the JavaScript pages
 	- Make it shiny (add the CSS)
-D. Test the app on Chrome (of course, its responsive!)
+D. Test the app on Chrome 
 E. Deploy to Heroku
 	- Run migrate first
 	- Assets didn’t load: 
 
-TO DO
+##TO DO
 —————
 1) Tests
 2) Error handling

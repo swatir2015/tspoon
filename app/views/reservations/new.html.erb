@@ -1,0 +1,14 @@
+<h3>Fill out our concierge form and we will find the perfect host available to host you on your travel dates</h3>
+
+<%= render 'form' %>
+
+<%= javascript_tag do %>
+  TS.Countries = [];
+  <% @countries.each do |country| %>
+    
+    TS.Countries[<%= country.id %>] = [
+    <% @cities.select {|c| c.country_id == country.id }.each do |s|%>
+      { id: <%=s.id %>, name: "<%=s.name %>" },
+    <% end %>];
+  <% end %>
+<% end %>

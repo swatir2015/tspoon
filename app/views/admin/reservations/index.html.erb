@@ -1,0 +1,41 @@
+<h3>All Reservations</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>City ID</th>
+      <th>Requested Date</th>
+      <th>Additional Dates</th>
+      <th>Number of Guests</th>
+      <th>Reservation Type</th>
+      <th>Meal Type</th>
+      <th>Allergies</th>
+      <th>Allergies Text</th>
+      <th>Spice Level</th>
+      <th>Alchohol</th>
+      <th>Number of Drinks</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.user_id %></td>
+        <td><%= reservation.cities_id %></td>
+        <td><%= reservation.requested_date %></td>
+        <td><%= reservation.additional_dates %></td>
+        <td><%= reservation.number_of_guests %></td>
+        <td><%= reservation.reservation_types_id %></td>
+        <td><%= reservation.meal_types_id %></td>
+        <td><%= reservation.allergies %></td>
+        <td><%= reservation.allergies_text %></td>
+        <td><%= reservation.spice_id %></td>
+        <td><%= reservation.alchohol %></td>
+        <td><%= reservation.drinks %></td>
+        <td><%= reservation.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

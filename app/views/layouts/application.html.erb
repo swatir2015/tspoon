@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Traveling Spoon</title>
+  <%= stylesheet_link_tag  'https://fonts.googleapis.com/css?family=Raleway' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_tag do %>
+    var TS = TS || { };
+  <% end %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="main">
+    <header>
+      <h2></h2>
+      <ul id="menu">
+        <li>
+          <ul>
+            <li>
+              <a href="#">SIGN UP</a>
+            </li>
+            <li id="login">
+              <a href="#">LOGIN</a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">SUPPORT</a>
+        </li>
+        <li>
+          <a href="#">BECOME A HOST</a>
+        </li>
+        <li>
+          <a href="#" id="book-now">BOOK NOW</a>
+        </li>
+      </ul>
+      <h1><%= @page_title %></h1>
+    </header>
+    <%= yield %>
+  </div>
+</body>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+</html>

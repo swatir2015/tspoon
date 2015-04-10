@@ -1,0 +1,122 @@
+<%= form_for(@reservation) do |f| %>
+  <% if @reservation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @reservation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form_section" id="experience">
+    <h4 class="rotate">EXPERIENCE</h4>
+    <div class="form-fields-collection">
+      <div class="field" id="country-field">
+        <div class="field-label">
+          <%= f.label :country, "Which country are you visiting?*" %>
+        </div>
+        <%= f.select :country, options_from_collection_for_select(@countries, 'id', 'name') %> 
+      </div>
+      <div class="field" id="city-field">
+        <div class="field-label">
+          <%= f.label :city, "Which city are you visiting?*" %>
+        </div>
+        <%= f.select :city, options_from_collection_for_select(@cities, 'id', 'name') %> 
+      </div>
+      <%= f.hidden_field :cities_id, :value => "0" %> 
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :requested_date, "Date*" %>
+        </div>
+        <%= f.date_field :requested_date, :placeholder=> "Eg: 5/31/2015" %>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :additional_dates, "Additional dates" %>
+          <span>Are you available on additional dates?</span>
+        </div>
+        <%= f.text_field :additional_dates, :placeholder=> "Please include additional dates" %>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :number_of_guests, "Number of guests*" %>
+        </div>
+        <%= f.select :number_of_guests, (0..20).map {|i| [i,i] } %>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :reservation_types_id, "Experience Type*" %>
+          <span>Choose between these private culinary experiences with your host</span>
+        </div>
+        <%= f.select :reservation_types_id, options_from_collection_for_select(@reservation_types, 'id', 'name') %>
+      </div>
+      <div class="field" id="meal-type">
+        <div class="field-label">
+          <%= f.label :meal_types_id, "Preferred meal time*" %>
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :meal_types_id, 0 %> Lunch
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :meal_types_id, 1 %> Dinner
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :meal_types_id, 2 %> Either
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form_section" id="food">
+    <h4 class="rotate">FOOD</h4>
+    <div class="form-fields-collection">
+      <div class="field" id="allergies">
+        <div class="field-label">
+          <%= f.label :allergies, "Allergies/Dietary restrictions*" %>
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :allergies, 1 %> Yes
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :allergies, 0, :checked => true %> No
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :allergies_text, "Allergies/Dietary restrictions*" %>
+          <span>If yes, list all restrictions</span>
+        </div>
+        <%= f.text_field :allergies_text %>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :spice_id, "Spice preference*" %>
+        </div>
+        <%= f.select :spice_id, options_from_collection_for_select(@spice_levels, 'id', 'name') %>
+      </div>
+      <div class="field" id="alchohol">
+        <div class="field-label">
+          <%= f.label :alchohol, "Alcohol" %>
+          <span>Interested in alcohol for an additional cost?</span>
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :alchohol, 1 %> Yes
+        </div>
+        <div class="field-radio">
+          <%= f.radio_button :alchohol, 0, :checked => true %> No
+        </div>
+      </div>
+      <div class="field">
+        <div class="field-label">
+          <%= f.label :drinks, "How many are drinking?*" %>
+        </div>
+        <%= f.select :drinks, (0..20).map {|i| [i,i] } %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <span>Sign in to save your details and submit your reservation form</span>
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

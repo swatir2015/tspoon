@@ -36,39 +36,44 @@ For more information about using Ruby on Heroku, see these Dev Center articles:
 # tspoon
 
 ## Steps I followed
-A. Setting up the environment
+-  Setting up the environment
 
-————————————————————————
-1) Created a Heroku account
-2) Installed Heroku toolbelt
-3) Installed PostGres. 
+-- Created a Heroku account
+-- Installed Heroku toolbelt
+-- Installed Postgres. 
 	Added to $PATH
-		export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-		export PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin
-4) Ran Bundle Install
-	- Had to change version of RVM. Using: rvm use ruby-1.9.3-p125
-	- Had to create symlink to GCC: sudo ln -s /usr/bin/gcc /usr/bin/gcc-4.2
-	- Ran into an issue with gem install pg
-		- sudo old libz files
-		- Install new version of libz
-		- ./configure, make and sudo make install
+```sh
+	export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+	export PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin
+```
+- Ran Bundle Install
+-- Had to change version of RVM. Using: rvm use ruby-1.9.3-p125
+-- Had to create symlink to GCC: sudo ln -s /usr/bin/gcc /usr/bin/gcc-4.2
+-- Ran into an issue with gem install pg
+		--- sudo old libz files
+		--- Install new version of libz
+		--- ./configure, make and sudo make install
 
-B. Set up the database
-	- Rake files to create the tables
-	- Seed the lookup tables (since there is no Enum type supported by Active Record in migrations for postgres
-C. Build the app
-	- Define the routes
-	- Write the controllers, models
-	- Create the HTML pages
-	- Create the JavaScript pages
-	- Make it shiny (add the CSS)
-D. Test the app on Chrome 
-E. Deploy to Heroku
-	- Run migrate first
-	- Assets didn’t load: 
+- Set up the database
+-- Rake files to create the tables
+-- Seed the lookup tables (since there is no Enum type supported by Active Record in migrations for postgres
+
+-  Build the app
+-- Define the routes
+-- Write the controllers, models
+-- Create the HTML pages
+-- Create the JavaScript pages
+-- Make it shiny (add the CSS)
+
+- Test the app on Chrome
+ 
+- Deploy to Heroku
+-- Run migrate first
+-- Assets didn’t load. Had to change setting of Rails env to serve static assets 
 
 ##TO DO
-—————
-1) Tests
-2) Error handling
-3) Make admin page pretty
+- Form Error Handling
+- Date time picker. Set to string type in database right now. Needs to be fixed
+- Tests
+- Make admin page pretty
+- Add image selection for reservation type (meal only, meal and class,...)
